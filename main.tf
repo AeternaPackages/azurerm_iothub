@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_certificates, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_name = module.iothubs.iothubs["${k1}"].name
+        iothub_name = module.iothubs.iothubs_name["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_consumer_groups, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_name = module.iothubs.iothubs["${k1}"].name
+        iothub_name = module.iothubs.iothubs_name["${k1}"]
       })
     }
   ]...)
@@ -23,7 +23,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_device_update_instances, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_id = module.iothubs.iothubs["${k1}"].id
+        iothub_id = module.iothubs.iothubs_id["${k1}"]
       })
     }
   ]...)
@@ -32,7 +32,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_endpoint_cosmosdb_accounts, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_id = module.iothubs.iothubs["${k1}"].id
+        iothub_id = module.iothubs.iothubs_id["${k1}"]
       })
     }
   ]...)
@@ -41,7 +41,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_endpoint_eventhubs, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_id = module.iothubs.iothubs["${k1}"].id
+        iothub_id = module.iothubs.iothubs_id["${k1}"]
       })
     }
   ]...)
@@ -50,7 +50,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_endpoint_servicebus_queues, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_id = module.iothubs.iothubs["${k1}"].id
+        iothub_id = module.iothubs.iothubs_id["${k1}"]
       })
     }
   ]...)
@@ -59,7 +59,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_endpoint_servicebus_topics, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_id = module.iothubs.iothubs["${k1}"].id
+        iothub_id = module.iothubs.iothubs_id["${k1}"]
       })
     }
   ]...)
@@ -68,7 +68,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_endpoint_storage_containers, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_id = module.iothubs.iothubs["${k1}"].id
+        iothub_id = module.iothubs.iothubs_id["${k1}"]
       })
     }
   ]...)
@@ -77,7 +77,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_enrichments, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_name = module.iothubs.iothubs["${k1}"].name
+        iothub_name = module.iothubs.iothubs_name["${k1}"]
       })
     }
   ]...)
@@ -86,7 +86,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_fallback_routes, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_name = module.iothubs.iothubs["${k1}"].name
+        iothub_name = module.iothubs.iothubs_name["${k1}"]
       })
     }
   ]...)
@@ -95,7 +95,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_file_uploads, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_id = module.iothubs.iothubs["${k1}"].id
+        iothub_id = module.iothubs.iothubs_id["${k1}"]
       })
     }
   ]...)
@@ -104,7 +104,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_routes, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_name = module.iothubs.iothubs["${k1}"].name
+        iothub_name = module.iothubs.iothubs_name["${k1}"]
       })
     }
   ]...)
@@ -113,7 +113,7 @@ locals {
     for k1, v1 in var.iothubs : {
       for k2, v2 in coalesce(v1.iothub_shared_access_policies, {}) :
       "${k1}/${k2}" => merge(v2, {
-        iothub_name = module.iothubs.iothubs["${k1}"].name
+        iothub_name = module.iothubs.iothubs_name["${k1}"]
       })
     }
   ]...)
