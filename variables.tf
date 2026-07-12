@@ -24,6 +24,8 @@ Optional:
 Nested iothub_certificates (azurerm_iothub_certificate):
     Required:
         - certificate_content
+        - certificate_content_key_vault_id (alternative to certificate_content - read from Key Vault instead)
+        - certificate_content_key_vault_secret_name (alternative to certificate_content - read from Key Vault instead)
         - name
         - resource_group_name
     Optional:
@@ -54,7 +56,11 @@ Nested iothub_endpoint_cosmosdb_accounts (azurerm_iothub_endpoint_cosmosdb_accou
         - partition_key_name
         - partition_key_template
         - primary_key
+        - primary_key_key_vault_id (alternative to primary_key - read from Key Vault instead)
+        - primary_key_key_vault_secret_name (alternative to primary_key - read from Key Vault instead)
         - secondary_key
+        - secondary_key_key_vault_id (alternative to secondary_key - read from Key Vault instead)
+        - secondary_key_key_vault_secret_name (alternative to secondary_key - read from Key Vault instead)
         - subscription_id
 Nested iothub_endpoint_eventhubs (azurerm_iothub_endpoint_eventhub):
     Required:
@@ -63,6 +69,8 @@ Nested iothub_endpoint_eventhubs (azurerm_iothub_endpoint_eventhub):
     Optional:
         - authentication_type
         - connection_string
+        - connection_string_key_vault_id (alternative to connection_string - read from Key Vault instead)
+        - connection_string_key_vault_secret_name (alternative to connection_string - read from Key Vault instead)
         - endpoint_uri
         - entity_path
         - identity_id
@@ -74,6 +82,8 @@ Nested iothub_endpoint_servicebus_queues (azurerm_iothub_endpoint_servicebus_que
     Optional:
         - authentication_type
         - connection_string
+        - connection_string_key_vault_id (alternative to connection_string - read from Key Vault instead)
+        - connection_string_key_vault_secret_name (alternative to connection_string - read from Key Vault instead)
         - endpoint_uri
         - entity_path
         - identity_id
@@ -85,6 +95,8 @@ Nested iothub_endpoint_servicebus_topics (azurerm_iothub_endpoint_servicebus_top
     Optional:
         - authentication_type
         - connection_string
+        - connection_string_key_vault_id (alternative to connection_string - read from Key Vault instead)
+        - connection_string_key_vault_secret_name (alternative to connection_string - read from Key Vault instead)
         - endpoint_uri
         - entity_path
         - identity_id
@@ -98,6 +110,8 @@ Nested iothub_endpoint_storage_containers (azurerm_iothub_endpoint_storage_conta
         - authentication_type
         - batch_frequency_in_seconds
         - connection_string
+        - connection_string_key_vault_id (alternative to connection_string - read from Key Vault instead)
+        - connection_string_key_vault_secret_name (alternative to connection_string - read from Key Vault instead)
         - encoding
         - endpoint_uri
         - file_name_format
@@ -121,6 +135,8 @@ Nested iothub_fallback_routes (azurerm_iothub_fallback_route):
 Nested iothub_file_uploads (azurerm_iothub_file_upload):
     Required:
         - connection_string
+        - connection_string_key_vault_id (alternative to connection_string - read from Key Vault instead)
+        - connection_string_key_vault_secret_name (alternative to connection_string - read from Key Vault instead)
         - container_name
     Optional:
         - authentication_type
@@ -232,10 +248,12 @@ EOT
       source         = string
     })))
     iothub_certificates = optional(map(object({
-      certificate_content = string
-      name                = string
-      resource_group_name = string
-      is_verified         = optional(bool) # Default: false
+      certificate_content                       = string
+      certificate_content_key_vault_id          = optional(string)
+      certificate_content_key_vault_secret_name = optional(string)
+      name                                      = string
+      resource_group_name                       = string
+      is_verified                               = optional(bool) # Default: false
     })))
     iothub_consumer_groups = optional(map(object({
       eventhub_endpoint_name = string
@@ -253,62 +271,74 @@ EOT
       }))
     })))
     iothub_endpoint_cosmosdb_accounts = optional(map(object({
-      container_name         = string
-      database_name          = string
-      endpoint_uri           = string
-      name                   = string
-      resource_group_name    = string
-      authentication_type    = optional(string) # Default: "keyBased"
-      identity_id            = optional(string)
-      partition_key_name     = optional(string)
-      partition_key_template = optional(string)
-      primary_key            = optional(string)
-      secondary_key          = optional(string)
-      subscription_id        = optional(string)
+      container_name                      = string
+      database_name                       = string
+      endpoint_uri                        = string
+      name                                = string
+      resource_group_name                 = string
+      authentication_type                 = optional(string) # Default: "keyBased"
+      identity_id                         = optional(string)
+      partition_key_name                  = optional(string)
+      partition_key_template              = optional(string)
+      primary_key                         = optional(string)
+      primary_key_key_vault_id            = optional(string)
+      primary_key_key_vault_secret_name   = optional(string)
+      secondary_key                       = optional(string)
+      secondary_key_key_vault_id          = optional(string)
+      secondary_key_key_vault_secret_name = optional(string)
+      subscription_id                     = optional(string)
     })))
     iothub_endpoint_eventhubs = optional(map(object({
-      name                = string
-      resource_group_name = string
-      authentication_type = optional(string) # Default: "keyBased"
-      connection_string   = optional(string)
-      endpoint_uri        = optional(string)
-      entity_path         = optional(string)
-      identity_id         = optional(string)
-      subscription_id     = optional(string)
+      name                                    = string
+      resource_group_name                     = string
+      authentication_type                     = optional(string) # Default: "keyBased"
+      connection_string                       = optional(string)
+      connection_string_key_vault_id          = optional(string)
+      connection_string_key_vault_secret_name = optional(string)
+      endpoint_uri                            = optional(string)
+      entity_path                             = optional(string)
+      identity_id                             = optional(string)
+      subscription_id                         = optional(string)
     })))
     iothub_endpoint_servicebus_queues = optional(map(object({
-      name                = string
-      resource_group_name = string
-      authentication_type = optional(string) # Default: "keyBased"
-      connection_string   = optional(string)
-      endpoint_uri        = optional(string)
-      entity_path         = optional(string)
-      identity_id         = optional(string)
-      subscription_id     = optional(string)
+      name                                    = string
+      resource_group_name                     = string
+      authentication_type                     = optional(string) # Default: "keyBased"
+      connection_string                       = optional(string)
+      connection_string_key_vault_id          = optional(string)
+      connection_string_key_vault_secret_name = optional(string)
+      endpoint_uri                            = optional(string)
+      entity_path                             = optional(string)
+      identity_id                             = optional(string)
+      subscription_id                         = optional(string)
     })))
     iothub_endpoint_servicebus_topics = optional(map(object({
-      name                = string
-      resource_group_name = string
-      authentication_type = optional(string) # Default: "keyBased"
-      connection_string   = optional(string)
-      endpoint_uri        = optional(string)
-      entity_path         = optional(string)
-      identity_id         = optional(string)
-      subscription_id     = optional(string)
+      name                                    = string
+      resource_group_name                     = string
+      authentication_type                     = optional(string) # Default: "keyBased"
+      connection_string                       = optional(string)
+      connection_string_key_vault_id          = optional(string)
+      connection_string_key_vault_secret_name = optional(string)
+      endpoint_uri                            = optional(string)
+      entity_path                             = optional(string)
+      identity_id                             = optional(string)
+      subscription_id                         = optional(string)
     })))
     iothub_endpoint_storage_containers = optional(map(object({
-      container_name             = string
-      name                       = string
-      resource_group_name        = string
-      authentication_type        = optional(string) # Default: "keyBased"
-      batch_frequency_in_seconds = optional(number) # Default: 300
-      connection_string          = optional(string)
-      encoding                   = optional(string) # Default: "Avro"
-      endpoint_uri               = optional(string)
-      file_name_format           = optional(string) # Default: "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}"
-      identity_id                = optional(string)
-      max_chunk_size_in_bytes    = optional(number) # Default: 314572800
-      subscription_id            = optional(string)
+      container_name                          = string
+      name                                    = string
+      resource_group_name                     = string
+      authentication_type                     = optional(string) # Default: "keyBased"
+      batch_frequency_in_seconds              = optional(number) # Default: 300
+      connection_string                       = optional(string)
+      connection_string_key_vault_id          = optional(string)
+      connection_string_key_vault_secret_name = optional(string)
+      encoding                                = optional(string) # Default: "Avro"
+      endpoint_uri                            = optional(string)
+      file_name_format                        = optional(string) # Default: "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}"
+      identity_id                             = optional(string)
+      max_chunk_size_in_bytes                 = optional(number) # Default: 314572800
+      subscription_id                         = optional(string)
     })))
     iothub_enrichments = optional(map(object({
       endpoint_names      = list(string)
@@ -324,15 +354,17 @@ EOT
       source              = optional(string) # Default: "DeviceMessages"
     })))
     iothub_file_uploads = optional(map(object({
-      connection_string     = string
-      container_name        = string
-      authentication_type   = optional(string) # Default: "keyBased"
-      default_ttl           = optional(string) # Default: "PT1H"
-      identity_id           = optional(string)
-      lock_duration         = optional(string) # Default: "PT1M"
-      max_delivery_count    = optional(number) # Default: 10
-      notifications_enabled = optional(bool)   # Default: false
-      sas_ttl               = optional(string) # Default: "PT1H"
+      connection_string                       = string
+      connection_string_key_vault_id          = optional(string)
+      connection_string_key_vault_secret_name = optional(string)
+      container_name                          = string
+      authentication_type                     = optional(string) # Default: "keyBased"
+      default_ttl                             = optional(string) # Default: "PT1H"
+      identity_id                             = optional(string)
+      lock_duration                           = optional(string) # Default: "PT1M"
+      max_delivery_count                      = optional(number) # Default: 10
+      notifications_enabled                   = optional(bool)   # Default: false
+      sas_ttl                                 = optional(string) # Default: "PT1H"
     })))
     iothub_routes = optional(map(object({
       enabled             = bool
