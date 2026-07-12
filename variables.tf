@@ -166,14 +166,14 @@ EOT
     })
     cloud_to_device = optional(object({
       default_ttl = optional(string) # Default: "PT1H"
-      feedback = optional(object({
+      feedback = optional(list(object({
         lock_duration      = optional(string) # Default: "PT60S"
         max_delivery_count = optional(number) # Default: 10
         time_to_live       = optional(string) # Default: "PT1H"
-      }))
+      })))
       max_delivery_count = optional(number) # Default: 10
     }))
-    endpoint = optional(object({
+    endpoint = optional(list(object({
       authentication_type        = optional(string) # Default: "keyBased"
       batch_frequency_in_seconds = optional(number) # Default: 300
       connection_string          = optional(string)
@@ -188,7 +188,7 @@ EOT
       resource_group_name        = optional(string)
       subscription_id            = optional(string)
       type                       = string
-    }))
+    })))
     enrichment = optional(list(object({
       endpoint_names = list(string)
       key            = string
@@ -215,22 +215,22 @@ EOT
       identity_ids = optional(set(string))
       type         = string
     }))
-    network_rule_set = optional(object({
+    network_rule_set = optional(list(object({
       apply_to_builtin_eventhub_endpoint = optional(bool)   # Default: false
       default_action                     = optional(string) # Default: "Deny"
-      ip_rule = optional(object({
+      ip_rule = optional(list(object({
         action  = optional(string) # Default: "Allow"
         ip_mask = string
         name    = string
-      }))
-    }))
-    route = optional(object({
+      })))
+    })))
+    route = optional(list(object({
       condition      = optional(string) # Default: "true"
       enabled        = bool
       endpoint_names = list(string)
       name           = string
       source         = string
-    }))
+    })))
     iothub_certificates = optional(map(object({
       certificate_content = string
       name                = string
