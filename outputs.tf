@@ -1,4 +1,9 @@
 # --- azurerm_iothub ---
+output "iothubs_id" {
+  description = "Map of id values across all iothubs, keyed the same as var.iothubs"
+  value       = module.iothubs.iothubs_id
+}
+
 output "iothubs_cloud_to_device" {
   description = "Map of cloud_to_device values across all iothubs, keyed the same as var.iothubs"
   value       = module.iothubs.iothubs_cloud_to_device
@@ -131,6 +136,11 @@ output "iothubs_type" {
 }
 
 # --- azurerm_iothub_certificate ---
+output "iothub_certificates_id" {
+  description = "Map of id values across all iothub_certificates, keyed the same as var.iothub_certificates"
+  value       = module.iothub_certificates.iothub_certificates_id
+}
+
 output "iothub_certificates_certificate_content" {
   description = "Map of certificate_content values across all iothub_certificates, keyed the same as var.iothub_certificates"
   value       = module.iothub_certificates.iothub_certificates_certificate_content
@@ -158,6 +168,11 @@ output "iothub_certificates_resource_group_name" {
 }
 
 # --- azurerm_iothub_consumer_group ---
+output "iothub_consumer_groups_id" {
+  description = "Map of id values across all iothub_consumer_groups, keyed the same as var.iothub_consumer_groups"
+  value       = module.iothub_consumer_groups.iothub_consumer_groups_id
+}
+
 output "iothub_consumer_groups_eventhub_endpoint_name" {
   description = "Map of eventhub_endpoint_name values across all iothub_consumer_groups, keyed the same as var.iothub_consumer_groups"
   value       = module.iothub_consumer_groups.iothub_consumer_groups_eventhub_endpoint_name
@@ -179,6 +194,11 @@ output "iothub_consumer_groups_resource_group_name" {
 }
 
 # --- azurerm_iothub_device_update_instance ---
+output "iothub_device_update_instances_id" {
+  description = "Map of id values across all iothub_device_update_instances, keyed the same as var.iothub_device_update_instances"
+  value       = module.iothub_device_update_instances.iothub_device_update_instances_id
+}
+
 output "iothub_device_update_instances_device_update_account_id" {
   description = "Map of device_update_account_id values across all iothub_device_update_instances, keyed the same as var.iothub_device_update_instances"
   value       = module.iothub_device_update_instances.iothub_device_update_instances_device_update_account_id
@@ -211,6 +231,11 @@ output "iothub_device_update_instances_tags" {
 }
 
 # --- azurerm_iothub_endpoint_cosmosdb_account ---
+output "iothub_endpoint_cosmosdb_accounts_id" {
+  description = "Map of id values across all iothub_endpoint_cosmosdb_accounts, keyed the same as var.iothub_endpoint_cosmosdb_accounts"
+  value       = module.iothub_endpoint_cosmosdb_accounts.iothub_endpoint_cosmosdb_accounts_id
+}
+
 output "iothub_endpoint_cosmosdb_accounts_authentication_type" {
   description = "Map of authentication_type values across all iothub_endpoint_cosmosdb_accounts, keyed the same as var.iothub_endpoint_cosmosdb_accounts"
   value       = module.iothub_endpoint_cosmosdb_accounts.iothub_endpoint_cosmosdb_accounts_authentication_type
@@ -279,6 +304,11 @@ output "iothub_endpoint_cosmosdb_accounts_subscription_id" {
 }
 
 # --- azurerm_iothub_endpoint_eventhub ---
+output "iothub_endpoint_eventhubs_id" {
+  description = "Map of id values across all iothub_endpoint_eventhubs, keyed the same as var.iothub_endpoint_eventhubs"
+  value       = module.iothub_endpoint_eventhubs.iothub_endpoint_eventhubs_id
+}
+
 output "iothub_endpoint_eventhubs_authentication_type" {
   description = "Map of authentication_type values across all iothub_endpoint_eventhubs, keyed the same as var.iothub_endpoint_eventhubs"
   value       = module.iothub_endpoint_eventhubs.iothub_endpoint_eventhubs_authentication_type
@@ -326,6 +356,11 @@ output "iothub_endpoint_eventhubs_subscription_id" {
 }
 
 # --- azurerm_iothub_endpoint_servicebus_queue ---
+output "iothub_endpoint_servicebus_queues_id" {
+  description = "Map of id values across all iothub_endpoint_servicebus_queues, keyed the same as var.iothub_endpoint_servicebus_queues"
+  value       = module.iothub_endpoint_servicebus_queues.iothub_endpoint_servicebus_queues_id
+}
+
 output "iothub_endpoint_servicebus_queues_authentication_type" {
   description = "Map of authentication_type values across all iothub_endpoint_servicebus_queues, keyed the same as var.iothub_endpoint_servicebus_queues"
   value       = module.iothub_endpoint_servicebus_queues.iothub_endpoint_servicebus_queues_authentication_type
@@ -373,6 +408,11 @@ output "iothub_endpoint_servicebus_queues_subscription_id" {
 }
 
 # --- azurerm_iothub_endpoint_servicebus_topic ---
+output "iothub_endpoint_servicebus_topics_id" {
+  description = "Map of id values across all iothub_endpoint_servicebus_topics, keyed the same as var.iothub_endpoint_servicebus_topics"
+  value       = module.iothub_endpoint_servicebus_topics.iothub_endpoint_servicebus_topics_id
+}
+
 output "iothub_endpoint_servicebus_topics_authentication_type" {
   description = "Map of authentication_type values across all iothub_endpoint_servicebus_topics, keyed the same as var.iothub_endpoint_servicebus_topics"
   value       = module.iothub_endpoint_servicebus_topics.iothub_endpoint_servicebus_topics_authentication_type
@@ -420,6 +460,11 @@ output "iothub_endpoint_servicebus_topics_subscription_id" {
 }
 
 # --- azurerm_iothub_endpoint_storage_container ---
+output "iothub_endpoint_storage_containers_id" {
+  description = "Map of id values across all iothub_endpoint_storage_containers, keyed the same as var.iothub_endpoint_storage_containers"
+  value       = module.iothub_endpoint_storage_containers.iothub_endpoint_storage_containers_id
+}
+
 output "iothub_endpoint_storage_containers_authentication_type" {
   description = "Map of authentication_type values across all iothub_endpoint_storage_containers, keyed the same as var.iothub_endpoint_storage_containers"
   value       = module.iothub_endpoint_storage_containers.iothub_endpoint_storage_containers_authentication_type
@@ -487,6 +532,11 @@ output "iothub_endpoint_storage_containers_subscription_id" {
 }
 
 # --- azurerm_iothub_enrichment ---
+output "iothub_enrichments_id" {
+  description = "Map of id values across all iothub_enrichments, keyed the same as var.iothub_enrichments"
+  value       = module.iothub_enrichments.iothub_enrichments_id
+}
+
 output "iothub_enrichments_endpoint_names" {
   description = "Map of endpoint_names values across all iothub_enrichments, keyed the same as var.iothub_enrichments"
   value       = module.iothub_enrichments.iothub_enrichments_endpoint_names
@@ -513,6 +563,11 @@ output "iothub_enrichments_value" {
 }
 
 # --- azurerm_iothub_fallback_route ---
+output "iothub_fallback_routes_id" {
+  description = "Map of id values across all iothub_fallback_routes, keyed the same as var.iothub_fallback_routes"
+  value       = module.iothub_fallback_routes.iothub_fallback_routes_id
+}
+
 output "iothub_fallback_routes_condition" {
   description = "Map of condition values across all iothub_fallback_routes, keyed the same as var.iothub_fallback_routes"
   value       = module.iothub_fallback_routes.iothub_fallback_routes_condition
@@ -544,6 +599,11 @@ output "iothub_fallback_routes_source" {
 }
 
 # --- azurerm_iothub_file_upload ---
+output "iothub_file_uploads_id" {
+  description = "Map of id values across all iothub_file_uploads, keyed the same as var.iothub_file_uploads"
+  value       = module.iothub_file_uploads.iothub_file_uploads_id
+}
+
 output "iothub_file_uploads_authentication_type" {
   description = "Map of authentication_type values across all iothub_file_uploads, keyed the same as var.iothub_file_uploads"
   value       = module.iothub_file_uploads.iothub_file_uploads_authentication_type
@@ -596,6 +656,11 @@ output "iothub_file_uploads_sas_ttl" {
 }
 
 # --- azurerm_iothub_route ---
+output "iothub_routes_id" {
+  description = "Map of id values across all iothub_routes, keyed the same as var.iothub_routes"
+  value       = module.iothub_routes.iothub_routes_id
+}
+
 output "iothub_routes_condition" {
   description = "Map of condition values across all iothub_routes, keyed the same as var.iothub_routes"
   value       = module.iothub_routes.iothub_routes_condition
@@ -632,6 +697,11 @@ output "iothub_routes_source" {
 }
 
 # --- azurerm_iothub_shared_access_policy ---
+output "iothub_shared_access_policies_id" {
+  description = "Map of id values across all iothub_shared_access_policies, keyed the same as var.iothub_shared_access_policies"
+  value       = module.iothub_shared_access_policies.iothub_shared_access_policies_id
+}
+
 output "iothub_shared_access_policies_device_connect" {
   description = "Map of device_connect values across all iothub_shared_access_policies, keyed the same as var.iothub_shared_access_policies"
   value       = module.iothub_shared_access_policies.iothub_shared_access_policies_device_connect
