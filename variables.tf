@@ -170,10 +170,10 @@ EOT
     location                      = string
     name                          = string
     resource_group_name           = string
-    event_hub_partition_count     = optional(number) # Default: 4
-    event_hub_retention_in_days   = optional(number) # Default: 1
-    local_authentication_enabled  = optional(bool)   # Default: true
-    min_tls_version               = optional(string) # Default: "1.2"
+    event_hub_partition_count     = optional(number)
+    event_hub_retention_in_days   = optional(number)
+    local_authentication_enabled  = optional(bool)
+    min_tls_version               = optional(string)
     public_network_access_enabled = optional(bool)
     tags                          = optional(map(string))
     sku = object({
@@ -181,71 +181,71 @@ EOT
       name     = string
     })
     cloud_to_device = optional(object({
-      default_ttl = optional(string) # Default: "PT1H"
+      default_ttl = optional(string)
       feedback = optional(list(object({
-        lock_duration      = optional(string) # Default: "PT60S"
-        max_delivery_count = optional(number) # Default: 10
-        time_to_live       = optional(string) # Default: "PT1H"
+        lock_duration      = optional(string)
+        max_delivery_count = optional(number)
+        time_to_live       = optional(string)
       })))
-      max_delivery_count = optional(number) # Default: 10
+      max_delivery_count = optional(number)
     }))
     endpoint = optional(list(object({
-      authentication_type        = optional(string) # Default: "keyBased"
-      batch_frequency_in_seconds = optional(number) # Default: 300
+      authentication_type        = optional(string)
+      batch_frequency_in_seconds = optional(number)
       connection_string          = optional(string)
       container_name             = optional(string)
-      encoding                   = optional(string) # Default: "Avro"
+      encoding                   = optional(string)
       endpoint_uri               = optional(string)
       entity_path                = optional(string)
-      file_name_format           = optional(string) # Default: "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}"
+      file_name_format           = optional(string)
       identity_id                = optional(string)
-      max_chunk_size_in_bytes    = optional(number) # Default: 314572800
-      name                       = string
+      max_chunk_size_in_bytes    = optional(number)
+      name                       = optional(string)
       resource_group_name        = optional(string)
       subscription_id            = optional(string)
-      type                       = string
+      type                       = optional(string)
     })))
     enrichment = optional(list(object({
-      endpoint_names = list(string)
-      key            = string
-      value          = string
+      endpoint_names = optional(list(string))
+      key            = optional(string)
+      value          = optional(string)
     })))
     fallback_route = optional(object({
-      condition      = optional(string) # Default: "true"
-      enabled        = optional(bool)   # Default: true
+      condition      = optional(string)
+      enabled        = optional(bool)
       endpoint_names = optional(list(string))
-      source         = optional(string) # Default: "DeviceMessages"
+      source         = optional(string)
     }))
     file_upload = optional(object({
-      authentication_type = optional(string) # Default: "keyBased"
+      authentication_type = optional(string)
       connection_string   = string
       container_name      = string
-      default_ttl         = optional(string) # Default: "PT1H"
+      default_ttl         = optional(string)
       identity_id         = optional(string)
-      lock_duration       = optional(string) # Default: "PT1M"
-      max_delivery_count  = optional(number) # Default: 10
-      notifications       = optional(bool)   # Default: false
-      sas_ttl             = optional(string) # Default: "PT1H"
+      lock_duration       = optional(string)
+      max_delivery_count  = optional(number)
+      notifications       = optional(bool)
+      sas_ttl             = optional(string)
     }))
     identity = optional(object({
       identity_ids = optional(set(string))
       type         = string
     }))
     network_rule_set = optional(list(object({
-      apply_to_builtin_eventhub_endpoint = optional(bool)   # Default: false
-      default_action                     = optional(string) # Default: "Deny"
+      apply_to_builtin_eventhub_endpoint = optional(bool)
+      default_action                     = optional(string)
       ip_rule = optional(list(object({
-        action  = optional(string) # Default: "Allow"
+        action  = optional(string)
         ip_mask = string
         name    = string
       })))
     })))
     route = optional(list(object({
-      condition      = optional(string) # Default: "true"
-      enabled        = bool
-      endpoint_names = list(string)
-      name           = string
-      source         = string
+      condition      = optional(string)
+      enabled        = optional(bool)
+      endpoint_names = optional(list(string))
+      name           = optional(string)
+      source         = optional(string)
     })))
     iothub_certificates = optional(map(object({
       certificate_content                       = string
@@ -253,7 +253,7 @@ EOT
       certificate_content_key_vault_secret_name = optional(string)
       name                                      = string
       resource_group_name                       = string
-      is_verified                               = optional(bool) # Default: false
+      is_verified                               = optional(bool)
     })))
     iothub_consumer_groups = optional(map(object({
       eventhub_endpoint_name = string
@@ -263,7 +263,7 @@ EOT
     iothub_device_update_instances = optional(map(object({
       device_update_account_id = string
       name                     = string
-      diagnostic_enabled       = optional(bool) # Default: false
+      diagnostic_enabled       = optional(bool)
       tags                     = optional(map(string))
       diagnostic_storage_account = optional(object({
         connection_string = string
@@ -276,7 +276,7 @@ EOT
       endpoint_uri                        = string
       name                                = string
       resource_group_name                 = string
-      authentication_type                 = optional(string) # Default: "keyBased"
+      authentication_type                 = optional(string)
       identity_id                         = optional(string)
       partition_key_name                  = optional(string)
       partition_key_template              = optional(string)
@@ -291,7 +291,7 @@ EOT
     iothub_endpoint_eventhubs = optional(map(object({
       name                                    = string
       resource_group_name                     = string
-      authentication_type                     = optional(string) # Default: "keyBased"
+      authentication_type                     = optional(string)
       connection_string                       = optional(string)
       connection_string_key_vault_id          = optional(string)
       connection_string_key_vault_secret_name = optional(string)
@@ -303,7 +303,7 @@ EOT
     iothub_endpoint_servicebus_queues = optional(map(object({
       name                                    = string
       resource_group_name                     = string
-      authentication_type                     = optional(string) # Default: "keyBased"
+      authentication_type                     = optional(string)
       connection_string                       = optional(string)
       connection_string_key_vault_id          = optional(string)
       connection_string_key_vault_secret_name = optional(string)
@@ -315,7 +315,7 @@ EOT
     iothub_endpoint_servicebus_topics = optional(map(object({
       name                                    = string
       resource_group_name                     = string
-      authentication_type                     = optional(string) # Default: "keyBased"
+      authentication_type                     = optional(string)
       connection_string                       = optional(string)
       connection_string_key_vault_id          = optional(string)
       connection_string_key_vault_secret_name = optional(string)
@@ -328,16 +328,16 @@ EOT
       container_name                          = string
       name                                    = string
       resource_group_name                     = string
-      authentication_type                     = optional(string) # Default: "keyBased"
-      batch_frequency_in_seconds              = optional(number) # Default: 300
+      authentication_type                     = optional(string)
+      batch_frequency_in_seconds              = optional(number)
       connection_string                       = optional(string)
       connection_string_key_vault_id          = optional(string)
       connection_string_key_vault_secret_name = optional(string)
-      encoding                                = optional(string) # Default: "Avro"
+      encoding                                = optional(string)
       endpoint_uri                            = optional(string)
-      file_name_format                        = optional(string) # Default: "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}"
+      file_name_format                        = optional(string)
       identity_id                             = optional(string)
-      max_chunk_size_in_bytes                 = optional(number) # Default: 314572800
+      max_chunk_size_in_bytes                 = optional(number)
       subscription_id                         = optional(string)
     })))
     iothub_enrichments = optional(map(object({
@@ -350,21 +350,21 @@ EOT
       enabled             = bool
       endpoint_names      = list(string)
       resource_group_name = string
-      condition           = optional(string) # Default: "true"
-      source              = optional(string) # Default: "DeviceMessages"
+      condition           = optional(string)
+      source              = optional(string)
     })))
     iothub_file_uploads = optional(map(object({
       connection_string                       = string
       connection_string_key_vault_id          = optional(string)
       connection_string_key_vault_secret_name = optional(string)
       container_name                          = string
-      authentication_type                     = optional(string) # Default: "keyBased"
-      default_ttl                             = optional(string) # Default: "PT1H"
+      authentication_type                     = optional(string)
+      default_ttl                             = optional(string)
       identity_id                             = optional(string)
-      lock_duration                           = optional(string) # Default: "PT1M"
-      max_delivery_count                      = optional(number) # Default: 10
-      notifications_enabled                   = optional(bool)   # Default: false
-      sas_ttl                                 = optional(string) # Default: "PT1H"
+      lock_duration                           = optional(string)
+      max_delivery_count                      = optional(number)
+      notifications_enabled                   = optional(bool)
+      sas_ttl                                 = optional(string)
     })))
     iothub_routes = optional(map(object({
       enabled             = bool
@@ -372,15 +372,15 @@ EOT
       name                = string
       resource_group_name = string
       source              = string
-      condition           = optional(string) # Default: "true"
+      condition           = optional(string)
     })))
     iothub_shared_access_policies = optional(map(object({
       name                = string
       resource_group_name = string
-      device_connect      = optional(bool) # Default: false
-      registry_read       = optional(bool) # Default: false
-      registry_write      = optional(bool) # Default: false
-      service_connect     = optional(bool) # Default: false
+      device_connect      = optional(bool)
+      registry_read       = optional(bool)
+      registry_write      = optional(bool)
+      service_connect     = optional(bool)
     })))
   }))
 
